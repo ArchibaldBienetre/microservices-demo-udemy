@@ -1,6 +1,7 @@
 package com.microservices.demo.twitter.to.kafka.service;
 
 import com.microservices.demo.twitter.to.kafka.service.config.TwitterToKafkaServiceConfigData;
+import com.microservices.demo.twitter.to.kafka.service.runner.StreamRunner;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -37,10 +38,12 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
     // @Autowired
     // private TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
     private final TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
+    private final StreamRunner streamRunner;
 
     // Constructor injection does not need @Autowired here!
-    public TwitterToKafkaServiceApplication(TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData) {
+    public TwitterToKafkaServiceApplication(TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData, StreamRunner streamRunner) {
         this.twitterToKafkaServiceConfigData = twitterToKafkaServiceConfigData;
+        this.streamRunner = streamRunner;
     }
 
     public static void main(String[] args) {
@@ -61,10 +64,11 @@ public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
     // option 3
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws Exception {
         log.info("App starts...");
         log.info("Twitter keywords: {}", Arrays.toString(twitterToKafkaServiceConfigData.getTwitterKeywords().toArray()));
         log.info(twitterToKafkaServiceConfigData.getWelcomeMessage());
+        streamRunner.start();
     }
 
 }
