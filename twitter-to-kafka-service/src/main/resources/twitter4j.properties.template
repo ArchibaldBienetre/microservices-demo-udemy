@@ -1,0 +1,12 @@
+# https://twitter4j.org/en/configuration.html
+# 'consumer_key' => API key
+# 'consumer_secret' => API secret
+# 'oauth_access_token' => Access token
+# 'oauth_access_token_secret' => Access token secret
+
+debug=true
+
+oauth.consumerKey=
+oauth.consumerSecret=
+oauth.accessToken=
+oauth.accessTokenSecret=
