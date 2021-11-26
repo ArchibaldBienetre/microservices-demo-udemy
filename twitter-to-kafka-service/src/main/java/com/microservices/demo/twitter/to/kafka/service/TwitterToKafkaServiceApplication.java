@@ -29,6 +29,13 @@ import java.util.Arrays;
 @SpringBootApplication
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
+    // Could also use field injection, BUT:
+    // * then you have to use Autowired,
+    // * you have to make it non-final,
+    // * it is not enforced that the variable gets a value
+    // * Spring uses reflection for this (resolved at runtime) - slower!
+    // @Autowired
+    // private TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
     private final TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
 
     // Constructor injection does not need @Autowired here!
