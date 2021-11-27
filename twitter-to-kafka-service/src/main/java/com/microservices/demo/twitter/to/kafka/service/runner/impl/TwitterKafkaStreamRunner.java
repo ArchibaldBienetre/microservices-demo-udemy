@@ -31,7 +31,7 @@ public class TwitterKafkaStreamRunner implements StreamRunner {
 
     @Override
     public void start() throws TwitterException {
-        twitterStream = TwitterStreamFactory.getSingleton();
+        twitterStream = new TwitterStreamFactory().getInstance();
         twitterStream.addListener(twitterKafkaStatusListener);
         addFilter();
     }

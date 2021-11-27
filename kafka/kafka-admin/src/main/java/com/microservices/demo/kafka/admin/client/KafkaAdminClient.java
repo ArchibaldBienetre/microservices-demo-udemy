@@ -59,7 +59,7 @@ public class KafkaAdminClient {
         log.info("Creating topics '{}', attempt {}", topicNames, retryContext.getRetryCount() + 1);
         List<NewTopic> kafkaTopics = topicNames.stream().map(topicName -> new NewTopic(
                 topicName.trim(),
-                kafkaConfigData.getNumberOfPartitions(),
+                kafkaConfigData.getNumOfPartitions(),
                 kafkaConfigData.getReplicationFactor()
         )).collect(toList());
         return adminClient.createTopics(kafkaTopics);
