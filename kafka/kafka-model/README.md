@@ -1,0 +1,1 @@
+Creates and holds Java Objects for Kafka in Avro format 

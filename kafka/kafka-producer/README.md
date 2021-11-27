@@ -1,0 +1,1 @@
+Uses spring-kafka dependency, has Kafka producer implementation.
