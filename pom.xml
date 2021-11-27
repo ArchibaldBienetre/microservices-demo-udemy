@@ -6,6 +6,9 @@
         <module>twitter-to-kafka-service</module>
         <module>app-config-data</module>
         <module>kafka</module>
+        <module>kafka/kafka-model</module>
+        <module>kafka/kafka-admin</module>
+        <module>kafka/kafka-producer</module>
         <module>common-config</module>
     </modules>
     <parent>
@@ -50,7 +53,7 @@
             </dependency>
             <dependency>
                 <groupId>com.microservices.demo</groupId>
-                <artifactId>commo-config</artifactId>
+                <artifactId>common-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -135,11 +138,6 @@
                 <groupId>org.springframework.retry</groupId>
                 <artifactId>spring-retry</artifactId>
                 <version>${spring-retry.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-aop</artifactId>
-                <version>${spring-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
