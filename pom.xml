@@ -27,6 +27,7 @@
         <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
         <twitter4j.version>4.0.7</twitter4j.version>
         <lombok.version>1.18.16</lombok.version>
+        <avro.version>1.10.0</avro.version>
     </properties>
 
     <dependencyManagement>
@@ -67,6 +68,11 @@
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${avro.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
@@ -86,6 +92,11 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro-maven-plugin</artifactId>
+                    <version>${avro.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
