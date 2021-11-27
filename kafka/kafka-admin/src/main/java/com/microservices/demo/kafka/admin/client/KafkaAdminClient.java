@@ -48,7 +48,7 @@ public class KafkaAdminClient {
 
             // catching Throwable here: I guess because RetryTemplate#handleRetryExhausted throws it
         } catch (Throwable t) {
-            throw new RuntimeException("Reached maximum number of retries for creating Kafka topics");
+            throw new KafkaClientException("Reached maximum number of retries for creating Kafka topics", t);
         }
 
         checkTopicsCreated();
@@ -70,7 +70,7 @@ public class KafkaAdminClient {
         Collection<TopicListing> topics = getTopics();
         int retryCount = 1;
         Integer maxRetry = retryConfigData.getMaxAttempts();
-        Integer multiplier = retryConfigData.getMultiplier().intValue();
+        int multiplier = retryConfigData.getMultiplier().intValue();
         Long sleepTimeMs = retryConfigData.getSleepTimeMs();
         for (String topic : kafkaConfigData.getTopicNamesToCreate()) {
             while (!isTopicCreated(topics, topic)) {
@@ -85,7 +85,7 @@ public class KafkaAdminClient {
     public void checkSchemaRegistry() {
         int retryCount = 1;
         Integer maxRetry = retryConfigData.getMaxAttempts();
-        Integer multiplier = retryConfigData.getMultiplier().intValue();
+        int multiplier = retryConfigData.getMultiplier().intValue();
         Long sleepTimeMs = retryConfigData.getSleepTimeMs();
 
         while (!getSchemaRegistryStatus().is2xxSuccessful()) {
@@ -139,8 +139,8 @@ public class KafkaAdminClient {
         Collection<TopicListing> topics;
         try {
             topics = retryTemplate.execute(this::doGetTopics);
-        } catch (Throwable e) {
-            throw new KafkaClientException("Reached maximum number of retries for reading Kafka topic(s)!");
+        } catch (Throwable t) {
+            throw new KafkaClientException("Reached maximum number of retries for reading Kafka topic(s)!", t);
         }
         return topics;
     }
