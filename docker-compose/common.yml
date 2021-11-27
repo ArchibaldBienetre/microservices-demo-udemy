@@ -1,0 +1,8 @@
+version: "3.7"
+
+# Common network driver config - will be included in other configs.
+# With this, containers can communicate using host names.
+# Without the bridge network, only IP-based communication between containers would be possible.
+networks:
+  application:
+    driver: bridge
