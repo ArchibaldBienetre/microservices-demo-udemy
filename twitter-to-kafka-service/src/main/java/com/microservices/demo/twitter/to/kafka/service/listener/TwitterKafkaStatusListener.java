@@ -13,6 +13,6 @@ import twitter4j.StatusAdapter;
 public class TwitterKafkaStatusListener extends StatusAdapter {
     @Override
     public void onStatus(Status status) {
-        log.info("Twitter status ith text {}", status.getText());
+        log.info("Twitter status with text '{}'", status.getText());
     }
 }
