@@ -15,6 +15,9 @@ spring:
           # private repo - ssh key or other auth required
           uri: git@github.com:ArchibaldBienetre/microservices-demo-udemy-config.git
 
+          # this is the default branch's name
+          default-label: main
+
           # In cloud environments, a private key could be put into the config (maybe, not directly inside this file).
           # See https://cloud.spring.io/spring-cloud-config/multi/multi__spring_cloud_config_server.html#_git_ssh_configuration_using_properties
           #
@@ -25,6 +28,8 @@ spring:
           # hostKeyAlgorithm: ssh-rsa
           # NB: You can't use an ed25519 key here, it seems.
           # Must use PEM format, e.g. 'ssh-keygen -m PEM -t rsa -b 4096'
+          #
+          # This is a read-only deploy key for just the configuration repo.
           privateKey: |
             -----BEGIN RSA PRIVATE KEY-----
             MIIJKAIBAAKCAgEAvCiGNxBmLJyaJmu6DOuA2VEaQpumkb1JwR4prwQpuRnnEvxN

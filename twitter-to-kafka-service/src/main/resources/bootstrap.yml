@@ -5,6 +5,9 @@ spring:
     # naming is important, maps to config files
     active: twitter_to_kafka
   cloud:
+    # look up the cloud config in your browser:
+    # http://localhost:8888/config-client/default
+    # http://localhost:8888/config-client/twitter_to_kafka
     config:
       # important, used as prefixes
       name: twitter-to-kafka-service,config-client
