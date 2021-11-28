@@ -12,8 +12,73 @@ spring:
     config:
       server:
         git:
-          # local git repository, just for this tutorial
-          uri: file://home/hoobert/repos/microservices-demo/config-server-repository
+          # private repo - ssh key or other auth required
+          uri: git@github.com:ArchibaldBienetre/microservices-demo-udemy-config.git
+
+          # In cloud environments, a private key could be put into the config (maybe, not directly inside this file).
+          # See https://cloud.spring.io/spring-cloud-config/multi/multi__spring_cloud_config_server.html#_git_ssh_configuration_using_properties
+          #
+          # As I found out, GitHub offers read-only anonymous access via SSH via deploy keys - these seem
+          # a great fit for this: https://gist.github.com/zhujunsan/a0becf82ade50ed06115
+          ignoreLocalSshSettings: true
+          # hostKey: someHostKey
+          # hostKeyAlgorithm: ssh-rsa
+          # NB: You can't use an ed25519 key here, it seems.
+          # Must use PEM format, e.g. 'ssh-keygen -m PEM -t rsa -b 4096'
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            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
+            -----END RSA PRIVATE KEY-----
+
+
           # clone repository on startup
           clone-on-start: true
     # fail immediately if configuration cannot be reached
