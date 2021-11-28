@@ -83,6 +83,27 @@ spring:
             u7KEhvi7LHngRYYPI8G2l2Vru3AL2VTyhxPHQ7175kPxUc4Vl/AXQm2vI7E=
             -----END RSA PRIVATE KEY-----
 
+          # The course shows how configure it in different ways:
+          # * github tokens
+          # * Java simplified encryption
+          #   * how it works:
+          #     * encrypt all passwords
+          #     * put encrypted passwords into the code where needed
+          #     * provide decryption key as connfiguration value (passed via environment variable or JVM argument '-Djasypt.encryptor.password=...')
+          #   * https://github.com/ulisesbocchio/jasypt-spring-boot
+          #   * https://www.baeldung.com/spring-boot-jasypt
+          #   * does not support PBKDF2 (password-based key derivation function 2), just an unsalted variant or something
+          # * Java's JCE
+          #   * use spring command-line utility (available via sdkman: 'sdk install springboot')
+          #     * https://docs.spring.io/spring-boot/docs/current/reference/html/cli.html
+          #   * has a password encode option: 'spring encrypt ...'
+          #   * NB: It seems for encrypting, the spring boot _cloud_ CLI is needed - it is not part of SDK man, unlike shown in the course
+          #     * https://cloud.spring.io/spring-cloud-cli/1.0.x/
+          #     * https://github.com/spring-projects/spring-boot
+          #   * uses AesBytesEncryptor PBKDF2: PBEKeySpec with salt and iteration count
+          #
+          # * JCE will be needed later - I will add everything then
+          #
 
           # clone repository on startup
           clone-on-start: true
