@@ -1,0 +1,20 @@
+# Loaded by a parent Spring application context,
+# will be used to obtain the application configuration
+# for later phases - so we need to separate this one
+# from application.yml.
+# This file is required in case of loading
+# configuration during the bootstrap phase,
+# which has priority over application.yml
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          # local git repository, just for this tutorial
+          uri: file://home/hoobert/repos/microservices-demo/config-server-repository
+          # clone repository on startup
+          clone-on-start: true
+    # fail immediately if configuration cannot be reached
+    fail-fast: true
