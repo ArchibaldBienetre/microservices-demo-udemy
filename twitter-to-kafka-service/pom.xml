@@ -86,7 +86,6 @@
                             <goal>build-image</goal>
                         </goals>
                     </execution>
-
                 </executions>
             </plugin>
         </plugins>
