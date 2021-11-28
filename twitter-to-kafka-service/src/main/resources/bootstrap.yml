@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: twitter-to-kafka-service
+  profiles:
+    # naming is important, maps to config files
+    active: twitter_to_kafka
+  cloud:
+    config:
+      # important, used as prefixes
+      name: twitter-to-kafka-service,config-client
+      # default value
+      uri: http://localhost:8888
